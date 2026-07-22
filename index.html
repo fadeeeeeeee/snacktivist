@@ -244,19 +244,27 @@
   .opt-row label{
     display:flex;align-items:center;gap:7px;font-size:13.5px;
     border:1px solid rgba(33,27,46,0.15);border-radius:100px;
-    padding:8px 14px;cursor:pointer;transition:border-color .15s,background .15s;
+    padding:8px 14px;cursor:pointer;transition:border-color .15s,background .15s,color .15s;
+    color:var(--ink);
   }
-  .opt-row input{accent-color:var(--purple-600);margin:0;}
+  .opt-row input{position:absolute;opacity:0;pointer-events:none;}
+  .food-icon{font-size:17px;line-height:1;filter:brightness(0);transition:filter .15s;}
   .opt-row label:has(input:checked){
-    border-color:var(--purple-600);background:var(--purple-100);
-    color:var(--purple-700);font-weight:600;
+    border-color:var(--green-600);background:var(--green-100);
+    color:var(--green-600);font-weight:600;
   }
+  .opt-row label:has(input:checked) .food-icon{filter:invert(35%) sepia(64%) saturate(657%) hue-rotate(74deg) brightness(89%) contrast(89%);}
   .box-summary{
     margin-top:6px;background:var(--green-100);border:1px solid rgba(31,94,36,0.18);
     border-radius:14px;padding:20px;
   }
   .box-summary h4{font-family:'Space Grotesk';font-size:16px;margin:0 0 10px;color:var(--green-800);}
   .box-summary p{font-size:14px;margin:0 0 4px;color:var(--ink);}
+  .nutrition-title{font-family:'Space Mono';font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--green-800);margin:18px 0 10px;}
+  .nutrition-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+  .nutrition-item{background:#fff;border-radius:10px;padding:10px 12px;}
+  .nutrition-item strong{display:block;font-family:'Space Grotesk';font-size:18px;line-height:1.1;color:var(--green-800);}
+  .nutrition-item span{font-size:11px;color:var(--ink-soft);}
   .box-summary .edit-link{
     display:inline-block;margin-top:10px;font-family:'Space Mono';font-size:12px;
     color:var(--purple-600);cursor:pointer;text-decoration:underline;
@@ -630,10 +638,10 @@
       <div class="opt-group">
         <h4>Protein</h4>
         <div class="opt-row">
-          <label><input type="radio" name="protein" value="Chicken" checked> Chicken</label>
-          <label><input type="radio" name="protein" value="Beef"> Beef</label>
-          <label><input type="radio" name="protein" value="Fish"> Fish</label>
-          <label><input type="radio" name="protein" value="Vegetarian"> Vegetarian</label>
+          <label><input type="radio" name="protein" value="Chicken" checked><span class="food-icon" aria-hidden="true">🍗</span> Chicken</label>
+          <label><input type="radio" name="protein" value="Beef"><span class="food-icon" aria-hidden="true">🥩</span> Beef</label>
+          <label><input type="radio" name="protein" value="Fish"><span class="food-icon" aria-hidden="true">🐟</span> Fish</label>
+          <label><input type="radio" name="protein" value="Vegetarian"><span class="food-icon" aria-hidden="true">🥬</span> Vegetarian</label>
         </div>
       </div>
 
@@ -650,30 +658,30 @@
       <div class="opt-group">
         <h4>Beans</h4>
         <div class="opt-row">
-          <label><input type="checkbox" name="beans" value="Black beans"> Black beans</label>
-          <label><input type="checkbox" name="beans" value="Pinto beans"> Pinto beans</label>
-          <label><input type="checkbox" name="beans" value="Kidney beans"> Kidney beans</label>
-          <label><input type="checkbox" name="beans" value="Chickpeas"> Chickpeas</label>
+          <label><input type="checkbox" name="beans" value="Black beans"><span class="food-icon" aria-hidden="true">🫘</span> Black beans</label>
+          <label><input type="checkbox" name="beans" value="Pinto beans"><span class="food-icon" aria-hidden="true">🫘</span> Pinto beans</label>
+          <label><input type="checkbox" name="beans" value="Kidney beans"><span class="food-icon" aria-hidden="true">🫘</span> Kidney beans</label>
+          <label><input type="checkbox" name="beans" value="Chickpeas"><span class="food-icon" aria-hidden="true">🫛</span> Chickpeas</label>
         </div>
       </div>
 
       <div class="opt-group">
         <h4>Greens</h4>
         <div class="opt-row">
-          <label><input type="checkbox" name="greens" value="Kale" checked> Kale</label>
-          <label><input type="checkbox" name="greens" value="Spinach"> Spinach</label>
-          <label><input type="checkbox" name="greens" value="Arugula"> Arugula</label>
-          <label><input type="checkbox" name="greens" value="Broccoli"> Broccoli</label>
-          <label><input type="checkbox" name="greens" value="Mixed greens"> Mixed greens</label>
+          <label><input type="checkbox" name="greens" value="Kale" checked><span class="food-icon" aria-hidden="true">🥬</span> Kale</label>
+          <label><input type="checkbox" name="greens" value="Spinach"><span class="food-icon" aria-hidden="true">🥬</span> Spinach</label>
+          <label><input type="checkbox" name="greens" value="Arugula"><span class="food-icon" aria-hidden="true">🌿</span> Arugula</label>
+          <label><input type="checkbox" name="greens" value="Broccoli"><span class="food-icon" aria-hidden="true">🥦</span> Broccoli</label>
+          <label><input type="checkbox" name="greens" value="Mixed greens"><span class="food-icon" aria-hidden="true">🥗</span> Mixed greens</label>
         </div>
       </div>
 
       <div class="opt-group">
         <h4>Toppings</h4>
         <div class="opt-row">
-          <label><input type="checkbox" name="toppings" value="Guacamole"> Guacamole</label>
-          <label><input type="checkbox" name="toppings" value="Tomato paste"> Tomato paste</label>
-          <label><input type="checkbox" name="toppings" value="Sour cream"> Sour cream</label>
+          <label><input type="checkbox" name="toppings" value="Guacamole"><span class="food-icon" aria-hidden="true">🥑</span> Guacamole</label>
+          <label><input type="checkbox" name="toppings" value="Tomato paste"><span class="food-icon" aria-hidden="true">🍅</span> Tomato paste</label>
+          <label><input type="checkbox" name="toppings" value="Sour cream"><span class="food-icon" aria-hidden="true">🥣</span> Sour cream</label>
         </div>
       </div>
 
@@ -714,6 +722,34 @@
 
     form.addEventListener('submit', function(e){
       e.preventDefault();
+
+      var nutrition = {
+        base: { calories: 180, protein: 6, carbs: 28, fiber: 5, fat: 5 },
+        protein: {
+          'Chicken': { calories: 240, protein: 42, carbs: 0, fiber: 0, fat: 8 },
+          'Beef': { calories: 310, protein: 38, carbs: 0, fiber: 0, fat: 20 },
+          'Fish': { calories: 220, protein: 36, carbs: 0, fiber: 0, fat: 8 },
+          'Vegetarian': { calories: 180, protein: 18, carbs: 12, fiber: 6, fat: 7 }
+        },
+        beans: {
+          'Black beans': { calories: 130, protein: 9, carbs: 24, fiber: 8, fat: 1 },
+          'Pinto beans': { calories: 130, protein: 8, carbs: 24, fiber: 8, fat: 1 },
+          'Kidney beans': { calories: 125, protein: 8, carbs: 22, fiber: 7, fat: 1 },
+          'Chickpeas': { calories: 135, protein: 7, carbs: 22, fiber: 6, fat: 2 }
+        },
+        greens: {
+          'Kale': { calories: 20, protein: 2, carbs: 4, fiber: 2, fat: 0 },
+          'Spinach': { calories: 15, protein: 2, carbs: 2, fiber: 1, fat: 0 },
+          'Arugula': { calories: 10, protein: 1, carbs: 2, fiber: 1, fat: 0 },
+          'Broccoli': { calories: 30, protein: 3, carbs: 6, fiber: 3, fat: 0 },
+          'Mixed greens': { calories: 15, protein: 1, carbs: 3, fiber: 2, fat: 0 }
+        },
+        toppings: {
+          'Guacamole': { calories: 100, protein: 1, carbs: 5, fiber: 4, fat: 9 },
+          'Tomato paste': { calories: 25, protein: 1, carbs: 5, fiber: 1, fat: 0 },
+          'Sour cream': { calories: 60, protein: 1, carbs: 2, fiber: 0, fat: 6 }
+        }
+      };
       var protein = form.querySelector('input[name="protein"]:checked').value;
       var doneness = form.querySelector('input[name="doneness"]:checked').value;
       var beans = Array.from(form.querySelectorAll('input[name="beans"]:checked')).map(function(el){ return el.value; });
@@ -722,6 +758,15 @@
       var beansText = beans.length ? beans.join(', ') : 'no beans selected';
       var greensText = greens.length ? greens.join(', ') : 'no greens selected';
       var toppingsText = toppings.length ? toppings.join(', ') : 'no toppings selected';
+      var totals = { calories: 0, protein: 0, carbs: 0, fiber: 0, fat: 0 };
+      function addNutrition(item){
+        Object.keys(totals).forEach(function(key){ totals[key] += item[key]; });
+      }
+      addNutrition(nutrition.base);
+      addNutrition(nutrition.protein[protein]);
+      beans.forEach(function(bean){ addNutrition(nutrition.beans[bean]); });
+      greens.forEach(function(green){ addNutrition(nutrition.greens[green]); });
+      toppings.forEach(function(topping){ addNutrition(nutrition.toppings[topping]); });
 
       summary.innerHTML =
         '<h4>Your box is set</h4>' +
@@ -730,6 +775,14 @@
         '<p><strong>Beans:</strong> ' + beansText + '</p>' +
         '<p><strong>Greens:</strong> ' + greensText + '</p>' +
         '<p><strong>Toppings:</strong> ' + toppingsText + '</p>' +
+        '<div class="nutrition-title">Estimated nutrition</div>' +
+        '<div class="nutrition-grid">' +
+          '<div class="nutrition-item"><strong>' + totals.calories + '</strong><span>Calories</span></div>' +
+          '<div class="nutrition-item"><strong>' + totals.protein + 'g</strong><span>Protein</span></div>' +
+          '<div class="nutrition-item"><strong>' + totals.carbs + 'g</strong><span>Carbs</span></div>' +
+          '<div class="nutrition-item"><strong>' + totals.fiber + 'g</strong><span>Fiber</span></div>' +
+          '<div class="nutrition-item"><strong>' + totals.fat + 'g</strong><span>Fat</span></div>' +
+        '</div>' +
         '<span class="edit-link" id="editBox">Edit selections</span>';
 
       form.style.display = 'none';
